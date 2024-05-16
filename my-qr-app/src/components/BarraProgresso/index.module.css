@@ -1,0 +1,13 @@
+.barra_progresso{
+    width: 300px;
+    height: auto;
+    background-color: #d1d5db; 
+    border-radius: 0.375rem; 
+    overflow: hidden;
+}
+
+.barra {
+    height: 100%;
+    background-color: #3b82f6; 
+    transition: all 0.3s;
+}
