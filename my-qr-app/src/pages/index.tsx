@@ -6,6 +6,7 @@ import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme }  from "@table-library/react-table-library/baseline";
 import React from "react";
 import { MagnifyingGlass, Trash } from "@phosphor-icons/react";
+import ProgressBar from "../components/BarraProgresso";
 
 function ListaAlunos(){
   const [data, setData] = useState({
@@ -107,6 +108,21 @@ function ListaAlunos(){
     setData(filteredData);
   }, [search]);
 
+  const [progresso, setProgresso] = useState<number>(50);
+
+  const addProgresso = () => {
+    if(progresso < 100){
+      setProgresso((progresso) => progresso + 10);
+    }
+  };
+
+  const menosProgresso = () => {
+    if(progresso > 0){
+      setProgresso((progresso) => progresso - 10);
+    }
+  };
+
+
   return (
     <section className={styles.fundo_tela}>
       <div className={styles.tabela}>
@@ -128,12 +144,22 @@ function ListaAlunos(){
         theme={theme}     
         layout={{ isDiv: true, fixedHeader: true}}
         id={styles.tabelaCompact}/>
+        
+        <div className={styles.container}>
+          <div className={styles.flex_container}> 
+            <ProgressBar progresso={progresso}/>
+            <span className={styles.porcentagem} > {progresso}% </span> 
+          </div>
 
+          <div className={styles.botao_progresso}>
+            <button onClick={addProgresso} className={styles.button_blue}>+</button>
+
+            <button onClick={menosProgresso} className={styles.button_red}>-</button>
+          </div>
+        </div> 
       </div>
     </section>
   );
 };
 
 export default ListaAlunos;
-
-
