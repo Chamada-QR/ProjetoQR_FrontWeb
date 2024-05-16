@@ -5,7 +5,7 @@ import { CompactTable } from '@table-library/react-table-library/compact';
 import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme }  from "@table-library/react-table-library/baseline";
 import React from "react";
-import { MagnifyingGlass, Trash } from "@phosphor-icons/react";
+import { MagnifyingGlass, Trash, UserPlus, RewindCircle } from "@phosphor-icons/react";
 import ProgressBar from "../components/BarraProgresso";
 
 function ListaAlunos(){
@@ -13,33 +13,33 @@ function ListaAlunos(){
     nodes: [    
       {
         id: "1",
-        name: "Task 1",
-        deadline: new Date(),
-        type: "TYPE 1",
+        nome: "Task 1",
+        data: new Date(),
+        ra: "TYPE 1",
         isComplete: true,
-        nodes: [{ id: "1.1", name: "Subtask 1" }, { id: "1.2", name: "Subtask 2" }],        
+        nodes: [{ id: "1.1", nome: "Subtask 1" }, { id: "1.2", nome: "Subtask 2" }],        
       },
       {
         id: "2",
-        name: "Task 2",
-        deadline: new Date(),
-        type: "TYPE 2",
+        nome: "Task 2",
+        data: new Date(),
+        ra: "TYPE 2",
         isComplete: false,
         nodes: [],
       },
       {
         id: "3",
-        name: "Task 2",
-        deadline: new Date(),
-        type: "TYPE 2",
+        nome: "Task 2",
+        data: new Date(),
+        ra: "TYPE 2",
         isComplete: false,
         nodes: [],
       },
       {
         id: "4",
-        name: "Task 2",
-        deadline: new Date(),
-        type: "TYPE 2",
+        nome: "Task 2",
+        data: new Date(),
+        ra: "TYPE 2",
         isComplete: false,
         nodes: [],
       },  
@@ -71,17 +71,17 @@ function ListaAlunos(){
   ]);
 
   const COLUMNS =[
-    { label: "Nome", renderCell: (item: any) => item.name },
+    { label: "Nome", renderCell: (item: any) => item.nome },
     {
       label: "Data",
       renderCell: (item: any) =>
-        item.deadline.toLocaleDateString("en-Us", {
+        item.data.toLocaleDateString("en-Us", {
           years: "numeric",
           month: "2-digit",
           day: "2-digit",
         }),
     },
-    { label: "RA", renderCell: (item: any) => item.type },
+    { label: "RA", renderCell: (item: any) => item.ra },
     {
       label: "Açao",
       renderCell: (item: any) => 
@@ -93,6 +93,7 @@ function ListaAlunos(){
     },
     { label: "Task", renderCell: (item: any) => item.nodes?.lenght },
   ];
+
   const [search, setSearch] = React.useState(""); 
   
   const handleSearch = (event: any) => {
@@ -102,7 +103,7 @@ function ListaAlunos(){
   useEffect(() => {
     const filteredData = {
       nodes: data.nodes.filter((item) =>
-        item.name.toLowerCase().includes(search.toLowerCase())
+        item.nome.toLowerCase().includes(search.toLowerCase())
       ),
     };
     setData(filteredData);
@@ -122,41 +123,59 @@ function ListaAlunos(){
     }
   };
 
-
   return (
     <section className={styles.fundo_tela}>
-      <div className={styles.tabela}>
-        <label htmlFor="search" className={styles.buscar}>
-          Buscar Nome:
-          <input className={styles.search} id="search" type="text" value={search} onChange={handleSearch}/>
-          <MagnifyingGlass size={18} weight="bold"
-          style={{
-          position: 'absolute',
-          marginTop: '2px',
-          marginRight: '5px',
-          color: 'rgba(255, 255, 255, 1)',
-          }} />
-        </label>
 
-        <CompactTable 
-        columns={COLUMNS}
-        data={data} 
-        theme={theme}     
-        layout={{ isDiv: true, fixedHeader: true}}
-        id={styles.tabelaCompact}/>
+      <div className={styles.next}>
+        <button className={styles.botao_next}>
+          <RewindCircle size={32} weight="bold" />
+        </button>
+      </div>    
+
+      <div className={styles.container_tabela}>
+        <div className={styles.user}>  
+          <button className={styles.button_user}>
+            <UserPlus size={20} weight="bold" />
+          </button>
+        </div>
+        <div className={styles.tabela}>        
         
-        <div className={styles.container}>
-          <div className={styles.flex_container}> 
-            <ProgressBar progresso={progresso}/>
-            <span className={styles.porcentagem} > {progresso}% </span> 
-          </div>
+          <label htmlFor="search" className={styles.buscar}>
+            Buscar Nome:
+            <input className={styles.search} id="search" type="text" value={search} onChange={handleSearch}/>
+            <MagnifyingGlass size={18} weight="bold"
+            style={{
+            position: 'absolute',
+            marginTop: '2px',
+            marginRight: '5px',
+            color: 'rgba(255, 255, 255, 1)',
+            }} />
+          </label>
 
-          <div className={styles.botao_progresso}>
-            <button onClick={addProgresso} className={styles.button_blue}>+</button>
+          <CompactTable 
+          columns={COLUMNS}
+          data={data} 
+          theme={theme}     
+          layout={{ isDiv: true, fixedHeader: true}}
+          id={styles.tabelaCompact}/>
+        
+          <div className={styles.container}>
+            <div className={styles.flex_container}> 
+              <ProgressBar progresso={progresso}/>
+              <span className={styles.porcentagem} > {progresso}% </span> 
+            </div>
 
-            <button onClick={menosProgresso} className={styles.button_red}>-</button>
-          </div>
-        </div> 
+            <div className={styles.botao_progresso}>
+              <button onClick={addProgresso} className={styles.button_blue}>+</button>
+
+              <button onClick={menosProgresso} className={styles.button_red}>-</button>
+            </div>
+
+            <div className={styles.botao_finalizar}>
+              <button className={styles.button_finalizarChamada}>Finalizar chamada</button>
+            </div>
+          </div> 
+        </div>
       </div>
     </section>
   );
