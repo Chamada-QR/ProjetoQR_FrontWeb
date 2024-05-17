@@ -6,7 +6,7 @@ import { useTheme } from "@table-library/react-table-library/theme";
 import { getTheme }  from "@table-library/react-table-library/baseline";
 import React from "react";
 import { MagnifyingGlass, Trash, UserPlus, RewindCircle } from "@phosphor-icons/react";
-import ProgressBar from "../components/BarraProgresso";
+import ProgrssBar from "../../components/BarraProgresso";
 
 function ListaAlunos(){
   const [data, setData] = useState({
@@ -161,7 +161,7 @@ function ListaAlunos(){
         
           <div className={styles.container}>
             <div className={styles.flex_container}> 
-              <ProgressBar progresso={progresso}/>
+              <ProgrssBar progresso={progresso}/>
               <span className={styles.porcentagem} > {progresso}% </span> 
             </div>
 
