@@ -1,6 +1,6 @@
 import styles from './index.module.css'
 import logoImg from '../../assets/logo_uniamerica_portais.png'
-
+import { Link } from 'react-router-dom'
 
 function Login(){
     return(
@@ -13,7 +13,15 @@ function Login(){
             <div className={styles.login}>
                 <div>
                     <input className={styles.email} type="email" name="email" placeholder='Nome'/>
-                    <p className={styles.registre}>Novo? Registre-se aqui!!!</p>
+                    <Link to='/registre' className={styles.link}>
+                        <p className={styles.registre}>Novo? Registre-se aqui!!!</p>
+                    </Link>
+                    
+
+                    <Link to='/chamada_professor'>
+                        <button className={styles.button_verChamada}>ver chamada</button>
+                    </Link>
+                    
                 </div>
             </div>
         </section>

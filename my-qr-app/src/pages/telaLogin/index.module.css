@@ -65,4 +65,24 @@ input[type="email"] {
     margin: 0;
 
     color: rgba(89, 170, 244, 1);
+
+}
+.link{
+    text-decoration: none;
+}
+
+
+.button_verChamada{
+
+    background-color: #dc2626;
+    color: #fff; 
+    border-radius: 1rem;
+    transition: background-color 0.3s;
+
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+.button_verChamada:hover{
+    background-color: #ef4444;
 }

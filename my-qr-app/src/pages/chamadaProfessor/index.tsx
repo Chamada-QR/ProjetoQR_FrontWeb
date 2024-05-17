@@ -7,6 +7,7 @@ import { getTheme }  from "@table-library/react-table-library/baseline";
 import React from "react";
 import { MagnifyingGlass, Trash, UserPlus, RewindCircle } from "@phosphor-icons/react";
 import ProgrssBar from "../../components/BarraProgresso";
+import { Link } from 'react-router-dom'
 
 function ListaAlunos(){
   const [data, setData] = useState({
@@ -127,9 +128,11 @@ function ListaAlunos(){
     <section className={styles.fundo_tela}>
 
       <div className={styles.next}>
-        <button className={styles.botao_next}>
-          <RewindCircle size={32} weight="bold" />
-        </button>
+        <Link to="/">
+          <button className={styles.botao_next}>
+            <RewindCircle size={32} weight="bold" />
+          </button>
+        </Link>
       </div>    
 
       <div className={styles.container_tabela}>

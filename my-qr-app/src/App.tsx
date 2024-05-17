@@ -1,4 +1,4 @@
-import './global.css'
+/*import './global.css'
 import ListaAlunos from './pages/chamadaProfessor'
 import Login from './pages/telaLogin'
 
@@ -10,5 +10,5 @@ function App() {
   )
 }
 
-/*<ListaAlunos />*/
-export default App
+<ListaAlunos />
+export default App*/
