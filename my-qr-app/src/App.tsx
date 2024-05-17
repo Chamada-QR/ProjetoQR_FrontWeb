@@ -1,12 +1,14 @@
 import './global.css'
-import ListaAlunos from './pages'
+import ListaAlunos from './pages/chamadaProfessor'
+import Login from './pages/telaLogin'
 
 function App() {
   return (
     <>
-     <ListaAlunos />
+      <Login />
     </>
   )
 }
 
+/*<ListaAlunos />*/
 export default App
