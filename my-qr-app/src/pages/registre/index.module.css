@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Noto+Sans:wght@400;600;700&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:wght@400;500;600;700&display=swap');
+
+.fundo_registre{
+    height: 100vh;
+    background-color: rgb(67, 88, 164, 1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+
+.loginRegistre{
+    width: 25%;
+    height: 50%;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+input {
+    border: none; 
+    padding: 4px;
+}
+input::placeholder {
+    color: rgba(255, 251, 251, 1);
+}
+input:-webkit-autofill{
+    -webkit-text-fill-color: rgba(255, 251, 251, 1); /* Cor do texto preenchido automaticamente */
+    -webkit-box-shadow: 0 0 0px 1000px rgb(67, 88, 164, 1) inset /* Cor de fundo preenchimento automaticamente */
+}
+input[type="email"], input[type="text"]  {
+    color: rgb(255, 251, 251, 1);
+}
+.email, .ra{
+    font-family: 'Poppins';
+    font-weight: 700;
+    width: 350px;
+    
+    background-color: rgb(67, 88, 164, 1);
+
+    cursor: pointer;
+    outline: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 1);
+    margin-bottom: 10px;
+}
+
+.button_voltar{
+
+    background-color: #dc2626;
+    color: #fff; 
+    border-radius: 0rem;
+    transition: background-color 0.3s;
+
+    border: none;
+    cursor: pointer;
+    outline: none;
+
+}
+.button_voltar:hover{
+    background-color: #ef4444;
+}
