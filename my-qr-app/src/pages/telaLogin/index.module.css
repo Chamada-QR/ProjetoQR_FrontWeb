@@ -25,7 +25,7 @@
 /*---------------------INPUT LOGIN--------------------------*/
 .login{
     width: 50%;
-
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,27 +36,31 @@ input {
     padding: 4px;
 }
 input::placeholder {
-    color: rgba(255, 251, 251, 1);
-
+    color: rgb(0, 0, 0);
 }
 input:-webkit-autofill{
-    -webkit-text-fill-color: rgba(255, 251, 251, 1); /* Cor do texto preenchido automaticamente */
-    -webkit-box-shadow: 0 0 0px 1000px rgb(67, 88, 164, 1) inset /* Cor de fundo preenchimento automaticamente */
+    -webkit-text-fill-color: rgb(0, 0, 0); /* Cor do texto preenchido automaticamente */
+    -webkit-box-shadow: 0 0 0px 1000px rgb(67, 88, 164, 1) inset Cor de fundo preenchimento automaticamente
 }
 input[type="email"] {
-    color: rgb(255, 251, 251, 1);
+    color: rgb(0, 0, 0);
 }
 .email{
     font-family: 'Poppins';
     font-weight: 700;
     width: 350px;
-    
-    background-color: rgb(67, 88, 164, 1);
+    color: black;
+    /* background-color: rgb(67, 88, 164, 1); */
 
     cursor: pointer;
     outline: none;
-    border-bottom: 2px solid rgba(255, 255, 255, 1);
+    border-bottom: 4px solid rgb(0, 0, 0);
     margin-bottom: 2px;
+}
+.rightMover{
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
 }
 .registre{
     font-family: 'Poppins';
@@ -73,12 +77,11 @@ input[type="email"] {
 
 
 .button_verChamada{
-
     background-color: #dc2626;
     color: #fff; 
     border-radius: 1rem;
     transition: background-color 0.3s;
-
+    padding: 4px 8px;
     border: none;
     cursor: pointer;
     outline: none;
