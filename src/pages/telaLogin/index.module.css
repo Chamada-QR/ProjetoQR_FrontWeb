@@ -13,6 +13,7 @@
 .logo{
     width: 50%;
 
+    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,36 +26,32 @@
 /*---------------------INPUT LOGIN--------------------------*/
 .login{
     width: 50%;
-    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
 input {
+    color: rgb(255, 255, 255);
     border: none; 
     padding: 4px;
 }
 input::placeholder {
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
+
 input:-webkit-autofill{
-    -webkit-text-fill-color: rgb(0, 0, 0); /* Cor do texto preenchido automaticamente */
-    -webkit-box-shadow: 0 0 0px 1000px rgb(67, 88, 164, 1) inset Cor de fundo preenchimento automaticamente
+    -webkit-text-fill-color: rgb(255, 255, 255); /* Cor do texto preenchido automaticamente */
 }
-input[type="email"] {
-    color: rgb(0, 0, 0);
-}
+
 .email{
     font-family: 'Poppins';
     font-weight: 700;
     width: 350px;
-    color: black;
-    /* background-color: rgb(67, 88, 164, 1); */
-
+    background-color: rgb(67, 88, 164, 1);
     cursor: pointer;
     outline: none;
-    border-bottom: 4px solid rgb(0, 0, 0);
+    border-bottom: 4px solid rgb(246, 246, 246);
     margin-bottom: 2px;
 }
 .rightMover{
@@ -81,7 +78,8 @@ input[type="email"] {
     color: #fff; 
     border-radius: 1rem;
     transition: background-color 0.3s;
-    padding: 4px 8px;
+    padding: 8px 16px;
+    
     border: none;
     cursor: pointer;
     outline: none;
