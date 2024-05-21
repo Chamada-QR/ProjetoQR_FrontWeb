@@ -1,51 +1,59 @@
-import { useEffect, useState } from "react";
-import styles from "./index.module.css";
-import { CompactTable } from '@table-library/react-table-library/compact';
+import { useEffect, useState } from 'react'
+import styles from './index.module.css'
+import { CompactTable } from '@table-library/react-table-library/compact'
 
-import { useTheme } from "@table-library/react-table-library/theme";
-import { getTheme }  from "@table-library/react-table-library/baseline";
-import React from "react";
-import { MagnifyingGlass, Trash, UserPlus, RewindCircle } from "@phosphor-icons/react";
-import ProgrssBar from "../../components/BarraProgresso";
+import { useTheme } from '@table-library/react-table-library/theme'
+import { getTheme } from '@table-library/react-table-library/baseline'
+import React from 'react'
+import {
+  MagnifyingGlass,
+  Trash,
+  UserPlus,
+  RewindCircle
+} from '@phosphor-icons/react'
+import ProgrssBar from '../../components/BarraProgresso'
 import { Link } from 'react-router-dom'
 
-function ListaAlunos(){
+function ListaAlunos() {
   const [data, setData] = useState({
-    nodes: [    
+    nodes: [
       {
-        id: "1",
-        nome: "Task 1",
+        id: '1',
+        nome: 'Task 1',
         data: new Date(),
-        ra: "TYPE 1",
+        ra: 'TYPE 1',
         isComplete: true,
-        nodes: [{ id: "1.1", nome: "Subtask 1" }, { id: "1.2", nome: "Subtask 2" }],        
+        nodes: [
+          { id: '1.1', nome: 'Subtask 1' },
+          { id: '1.2', nome: 'Subtask 2' }
+        ]
       },
       {
-        id: "2",
-        nome: "Task 2",
+        id: '2',
+        nome: 'Task 2',
         data: new Date(),
-        ra: "TYPE 2",
+        ra: 'TYPE 2',
         isComplete: false,
-        nodes: [],
+        nodes: []
       },
       {
-        id: "3",
-        nome: "Task 2",
+        id: '3',
+        nome: 'Task 2',
         data: new Date(),
-        ra: "TYPE 2",
+        ra: 'TYPE 2',
         isComplete: false,
-        nodes: [],
+        nodes: []
       },
       {
-        id: "4",
-        nome: "Task 2",
+        id: '4',
+        nome: 'Task 2',
         data: new Date(),
-        ra: "TYPE 2",
+        ra: 'TYPE 2',
         isComplete: false,
-        nodes: [],
-      },  
-    ],
-  });
+        nodes: []
+      }
+    ]
+  })
 
   const theme = useTheme([
     getTheme(),
@@ -67,121 +75,139 @@ function ListaAlunos(){
         font-family: Open Sans;
         font-weight: 500;
         color: rgba(0, 0, 0, 1);
-      `,
-    },
-  ]);
+      `
+    }
+  ])
 
-  const COLUMNS =[
-    { label: "Nome", renderCell: (item: any) => item.nome },
+  const COLUMNS = [
+    { label: 'Nome', renderCell: (item: any) => item.nome },
     {
-      label: "Data",
+      label: 'Data',
       renderCell: (item: any) =>
-        item.data.toLocaleDateString("en-Us", {
-          years: "numeric",
-          month: "2-digit",
-          day: "2-digit",
-        }),
+        item.data.toLocaleDateString('en-Us', {
+          years: 'numeric',
+          month: '2-digit',
+          day: '2-digit'
+        })
     },
-    { label: "RA", renderCell: (item: any) => item.ra },
+    { label: 'RA', renderCell: (item: any) => item.ra },
     {
-      label: "Açao",
-      renderCell: (item: any) => 
+      label: 'Açao',
+      renderCell: (item: any) => (
         <div>
           <button className={styles.botao}>
             <Trash size={25} weight="bold" />
           </button>
         </div>
+      )
     },
-    { label: "Task", renderCell: (item: any) => item.nodes?.lenght },
-  ];
+    { label: 'Task', renderCell: (item: any) => item.nodes?.lenght }
+  ]
 
-  const [search, setSearch] = React.useState(""); 
-  
+  const [search, setSearch] = React.useState('')
+
   const handleSearch = (event: any) => {
-    setSearch(event.target.value);
-  };
+    setSearch(event.target.value)
+  }
 
   useEffect(() => {
     const filteredData = {
-      nodes: data.nodes.filter((item) =>
+      nodes: data.nodes.filter(item =>
         item.nome.toLowerCase().includes(search.toLowerCase())
-      ),
-    };
-    setData(filteredData);
-  }, [search]);
+      )
+    }
+    setData(prevState => ({
+      ...prevState,
+      nodes: filteredData.nodes
+    }))
+  }, [search])
 
-  const [progresso, setProgresso] = useState<number>(50);
+  const [progresso, setProgresso] = useState<number>(50)
 
   const addProgresso = () => {
-    if(progresso < 100){
-      setProgresso((progresso) => progresso + 10);
+    if (progresso < 100) {
+      setProgresso(progresso => progresso + 10)
     }
-  };
+  }
 
   const menosProgresso = () => {
-    if(progresso > 0){
-      setProgresso((progresso) => progresso - 10);
+    if (progresso > 0) {
+      setProgresso(progresso => progresso - 10)
     }
-  };
+  }
 
   return (
     <section className={styles.fundo_tela}>
-
+      {/* Botão de voltar a pagina de login canto superior esquerdo */}
       <div className={styles.next}>
         <Link to="/">
           <button className={styles.botao_next}>
             <RewindCircle size={32} weight="bold" />
           </button>
         </Link>
-      </div>    
+      </div>
 
       <div className={styles.container_tabela}>
-        <div className={styles.user}>  
+        <div className={styles.user}>
           <button className={styles.button_user}>
             <UserPlus size={20} weight="bold" />
           </button>
         </div>
-        <div className={styles.tabela}>        
-        
+        <div className={styles.tabela}>
           <label htmlFor="search" className={styles.buscar}>
             Buscar Nome:
-            <input className={styles.search} id="search" type="text" value={search} onChange={handleSearch}/>
-            <MagnifyingGlass size={18} weight="bold"
-            style={{
-            position: 'absolute',
-            marginTop: '2px',
-            marginRight: '5px',
-            color: 'rgba(255, 255, 255, 1)',
-            }} />
+            <input
+              className={styles.search}
+              id="search"
+              type="text"
+              value={search}
+              onChange={handleSearch}
+            />
+            <MagnifyingGlass
+              size={18}
+              weight="bold"
+              style={{
+                position: 'absolute',
+                marginTop: '2px',
+                marginRight: '5px',
+                color: 'rgba(255, 255, 255, 1)'
+              }}
+            />
           </label>
 
-          <CompactTable 
-          columns={COLUMNS}
-          data={data} 
-          theme={theme}     
-          layout={{ isDiv: true, fixedHeader: true}}
-          id={styles.tabelaCompact}/>
-        
-          <div className={styles.container}>
-            <div className={styles.flex_container}> 
-              <ProgrssBar progresso={progresso}/>
-              <span className={styles.porcentagem} > {progresso}% </span> 
-            </div>
+          <CompactTable
+            columns={COLUMNS}
+            data={data}
+            theme={theme}
+            layout={{ isDiv: true, fixedHeader: true }}
+            id={styles.tabelaCompact}
+          />
+        </div>
+      </div>
+      <div className={styles.container}>
+        <div className={styles.flex_container}>
+          <ProgrssBar progresso={progresso} />
+          <span className={styles.porcentagem}> {progresso}% </span>
+        </div>
 
-            <div className={styles.botao_progresso}>
-              <button onClick={addProgresso} className={styles.button_blue}>+</button>
+        <div className={styles.botao_progresso}>
+          <button onClick={addProgresso} className={styles.button_blue}>
+            +
+          </button>
 
-              <button onClick={menosProgresso} className={styles.button_red}>-</button>
-            </div>
+          <button onClick={menosProgresso} className={styles.button_red}>
+            -
+          </button>
+        </div>
 
-            <div className={styles.botao_finalizar}>
-              <button className={styles.button_finalizarChamada}>Finalizar chamada</button>
-            </div>
-          </div> 
+        <div className={styles.botao_finalizar}>
+          <button className={styles.button_finalizarChamada}>
+            Finalizar chamada
+          </button>
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default ListaAlunos;
+export default ListaAlunos
