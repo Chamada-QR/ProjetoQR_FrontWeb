@@ -11,7 +11,7 @@ import {
   UserPlus,
   RewindCircle
 } from '@phosphor-icons/react'
-import ProgrssBar from '../../components/BarraProgresso'
+import ProgressBar from '../../components/BarraProgresso'
 import { Link } from 'react-router-dom'
 import { DefaultModal } from '../../components/DefaultModal'
 
@@ -250,46 +250,46 @@ function ListaAlunos() {
   return (
     <section className={styles.fundo_tela}>
       {/* Botão de voltar a pagina de login canto superior esquerdo */}
-      <div className={styles.next}>
+      <div className={styles.back}>
         <Link to="/">
-          <button className={styles.botao_next}>
-            <RewindCircle size={32} weight="bold" />
-          </button>
+          <RewindCircle weight="bold" />
         </Link>
       </div>
 
-      <div className={styles.container_tabela}>
+      <div className={styles.containerMain}>
         {/* Botão para adicionar um novo aluno */}
-        <DefaultModal
-          buttonChild={
-            <div className={styles.user}>
-              <button className={styles.button_user}>
-                <UserPlus size={20} weight="bold" />
-              </button>
-            </div>
-          }
-        >
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-          <p>DENTRO MODAL</p>
-        </DefaultModal>
+        <div className={styles.modalContainer}>
+          <DefaultModal
+            buttonChild={
+              <div className={styles.user}>
+                <button className={styles.button_user}>
+                  <UserPlus weight="bold" />
+                </button>
+              </div>
+            }
+          >
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+            <p>DENTRO MODAL</p>
+          </DefaultModal>
+        </div>
 
         {/* Container Tabela */}
         <div className={styles.containerTabela}>
@@ -323,27 +323,28 @@ function ListaAlunos() {
             id={styles.tabelaCompact}
           />
         </div>
-      </div>
-      <div className={styles.container}>
-        <div className={styles.flex_container}>
-          <ProgrssBar progresso={progresso} />
-          <span className={styles.porcentagem}> {progresso}% </span>
-        </div>
 
-        <div className={styles.botao_progresso}>
-          <button onClick={addProgresso} className={styles.button_blue}>
-            +
-          </button>
+        <div className={styles.progressBar}>
+          <div className={styles.flex_container}>
+            <ProgressBar progresso={progresso} />
+            <span className={styles.porcentagem}> {progresso}% </span>
+          </div>
 
-          <button onClick={menosProgresso} className={styles.button_red}>
-            -
-          </button>
-        </div>
+          <div className={styles.botao_progresso}>
+            <button onClick={addProgresso} className={styles.button_blue}>
+              +
+            </button>
 
-        <div className={styles.botao_finalizar}>
-          <button className={styles.button_finalizarChamada}>
-            Finalizar chamada
-          </button>
+            <button onClick={menosProgresso} className={styles.button_red}>
+              -
+            </button>
+          </div>
+
+          <div className={styles.botao_finalizar}>
+            <button className={styles.button_finalizarChamada}>
+              Finalizar chamada
+            </button>
+          </div>
         </div>
       </div>
     </section>
