@@ -90,10 +90,11 @@
 }
 
 /*---------------------BOTAO DE PROGRESSO---------------------------*/
-.botao_progresso{
+.botaoProgresso{
     display: flex;
     justify-content:space-between;
     width: 100px;
+    
 }
 
 .button_blue{
@@ -130,16 +131,14 @@
 
 
 /*---------------------BOTAO DE FINALIZAR---------------------------*/
-.botao_finalizar{
+.botaoFinalizar{
     display: flex;
     margin-top: 10px;
-    width: 250px;
-    height: 30px;
 }
-.button_finalizarChamada{
+.botaoFinalizar button{
     width: 100%;
 
-    background-color: #dc2626;
+    background-color: #f31919;
     color: #fff; 
     border-radius: 0.375rem;
     transition: background-color 0.3s;
@@ -147,13 +146,15 @@
     border: none;
     cursor: pointer;
     outline: none;
+    padding: 16px;
 
     font-style: normal;
-    font-weight: 400;
+    font-size: 24px;
+    font-weight: bold;
     font-family: 'Poppins';
 }
-.button_finalizarChamada:hover{
-    background-color: #ef4444;
+.botaoFinalizar button:hover{
+    opacity: .8;
 }
 /*---------------------CONTAINER MAIN GERAL---------------------------*/
 .containerMain{
@@ -213,11 +214,18 @@
 .user:hover{
     opacity: .9;
 }
-
+.progressBarContainer{
+    display: flex;
+    min-width: 1325px;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
 .progressBar{
     display: flex;
     flex-direction: column;
     align-items: center;
     color: white;
-
+    min-width: 1325px;
+    /* background-color: red; */
 }

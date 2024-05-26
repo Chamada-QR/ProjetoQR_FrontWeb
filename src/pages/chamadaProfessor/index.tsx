@@ -257,7 +257,7 @@ function ListaAlunos() {
       </div>
 
       <div className={styles.containerMain}>
-        {/* Botão para adicionar um novo aluno */}
+        {/* Botão para adicionar um aluno na chamada*/}
         <div className={styles.modalContainer}>
           <DefaultModal
             buttonChild={
@@ -324,13 +324,13 @@ function ListaAlunos() {
           />
         </div>
 
-        <div className={styles.progressBar}>
-          <div className={styles.flex_container}>
+        {/* Barra de progresso */}
+        <div className={styles.progressBarContainer}>
+          <div className={styles.progressBar}>
             <ProgressBar progresso={progresso} />
-            <span className={styles.porcentagem}> {progresso}% </span>
           </div>
 
-          <div className={styles.botao_progresso}>
+          <div className={styles.botaoProgresso}>
             <button onClick={addProgresso} className={styles.button_blue}>
               +
             </button>
@@ -340,7 +340,7 @@ function ListaAlunos() {
             </button>
           </div>
 
-          <div className={styles.botao_finalizar}>
+          <div className={styles.botaoFinalizar}>
             <button className={styles.button_finalizarChamada}>
               Finalizar chamada
             </button>
