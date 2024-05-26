@@ -1,34 +1,36 @@
+.container {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+}
+
 .newModal {
-    background: #d9d9d9;
-    position: absolute;
-    z-index: 9999999999999999999;
-    inset: 40px;
-    border: 1px solid;
-    overflow: auto;
-    border-radius: 4px;
-    outline: none;
-    padding: 20px;
-    width: 70%;
-    margin: auto;
-    box-shadow: 2px 2px;
-  }
+  background: #d9d9d9;
+  position: absolute;
+  inset: 40px;
+  border: 1px solid;
+  overflow: auto;
+  border-radius: 4px;
+  outline: none;
+  padding: 20px;
+  width: 70%;
+  margin: auto;
+  box-shadow: 2px 2px;
+}
   
-  .newModal > button {
-    background-color: transparent;
-    border: none;
-    font-weight: bold;
-    position: absolute;
-    top: 5px;
-    right: 15px;
-    font-size: 40px;
-  }
+.newModal button {
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  position: absolute;
+  top: 5px;
+  right: 15px;
+  font-size: 40px;
+}
   
-  .container {
-    display: flex;
-    cursor: pointer;
-  }
+
   
-  .container > button {
+.container > button {
     border-radius: 9px;
     padding: 5px 34px;
     text-decoration: none;
@@ -36,5 +38,5 @@
     border: none;
     font-weight: bold;
     color: white;
-  }
+}
   

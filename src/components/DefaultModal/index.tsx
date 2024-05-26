@@ -31,14 +31,12 @@ export function DefaultModal({
           {buttonText}
         </button>
       )}
-      <Modal
-        className={styles.NewModal}
-        isOpen={modalIsOpen}
-        onRequestClose={closeModal}
-      >
-        {true && children}
+      {/* <div className={styles.newModal}> */}
+      <Modal shouldCloseOnEsc isOpen={modalIsOpen} onRequestClose={closeModal}>
+        {children}
         <button onClick={closeModal}>X</button>
       </Modal>
+      {/* </div> */}
     </section>
   )
 }

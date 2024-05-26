@@ -9,7 +9,8 @@ import {
   MagnifyingGlass,
   Trash,
   UserPlus,
-  RewindCircle
+  RewindCircle,
+  QrCode
 } from '@phosphor-icons/react'
 import ProgressBar from '../../components/BarraProgresso'
 import { Link } from 'react-router-dom'
@@ -167,6 +168,7 @@ function ListaAlunos() {
       Table: `
         max-height:500px;
         border-radius:  10px;
+        z-index: 0;
       `,
       HeaderRow: `
         background: rgba(255, 255, 255, 1);
@@ -259,6 +261,16 @@ function ListaAlunos() {
       <div className={styles.containerMain}>
         {/* Botão para adicionar um aluno na chamada*/}
         <div className={styles.modalContainer}>
+          {/* Botao para pagina do QR */}
+          <Link target="_blank" to="/qr">
+            <div className={styles.user}>
+              <button className={styles.button_user}>
+                <QrCode size={32} weight="bold" />
+              </button>
+            </div>
+          </Link>
+
+          {/* Botao para modal */}
           <DefaultModal
             buttonChild={
               <div className={styles.user}>
@@ -268,26 +280,11 @@ function ListaAlunos() {
               </div>
             }
           >
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
-            <p>DENTRO MODAL</p>
+            <form className={styles.formPresenca}>
+              <input type="text" placeholder="Nome completo" />
+              <input type="text" placeholder="Ra" />
+              <button type="submit">Registrar presença</button>
+            </form>
           </DefaultModal>
         </div>
 

@@ -6,26 +6,30 @@ import ListaAlunos from './pages/chamadaProfessor/index.tsx'
 import './global.css'
 import Login from './pages/telaLogin/index.tsx'
 import Registre from './pages/registre/index.tsx'
-
+import QrStudents from './pages/qrStudents/index.tsx'
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Login />,
+    path: '/',
+    element: <Login />
   },
   {
-    path: "/registre",
-    element: <Registre />,
+    path: '/registre',
+    element: <Registre />
   },
   {
-    path: "/chamada_professor",
-    element: <ListaAlunos />,
+    path: '/chamada_professor',
+    element: <ListaAlunos />
   },
+  {
+    path: '/qr',
+    element: <QrStudents />
+  }
 ])
 
 /*  <App />*/
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router}/> 
-  </React.StrictMode>,
+    <RouterProvider router={router} />
+  </React.StrictMode>
 )
