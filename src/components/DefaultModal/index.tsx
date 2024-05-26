@@ -32,9 +32,17 @@ export function DefaultModal({
         </button>
       )}
       {/* <div className={styles.newModal}> */}
-      <Modal shouldCloseOnEsc isOpen={modalIsOpen} onRequestClose={closeModal}>
+      <Modal
+        className={styles.newModal}
+        shouldCloseOnEsc
+        shouldCloseOnOverlayClick
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+      >
         {children}
-        <button onClick={closeModal}>X</button>
+        <button className={styles.closeButton} onClick={closeModal}>
+          X
+        </button>
       </Modal>
       {/* </div> */}
     </section>
