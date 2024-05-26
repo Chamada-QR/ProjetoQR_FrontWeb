@@ -6,10 +6,16 @@ type Props = {
 
 export default function ProgrssBar({ progresso }: Props) {
   return (
-    <div className={styles.barra_progresso}>
-      <div className={styles.barra} style={{ width: `${progresso}%` }}>
-        <p>{progresso} %</p>
-      </div>
-    </div>
+    <>
+      {progresso ? (
+        <div className={styles.barra_progresso}>
+          <div className={styles.barra} style={{ width: `${progresso}%` }}>
+            <p>{progresso} %</p>
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
+    </>
   )
 }

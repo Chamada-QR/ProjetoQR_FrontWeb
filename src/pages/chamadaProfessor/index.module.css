@@ -220,6 +220,7 @@
     width: 100%;
     flex-direction: column;
     align-items: center;
+    transition: all 900ms ease-in-out;
 }
 .progressBar{
     display: flex;
