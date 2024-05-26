@@ -11,20 +11,34 @@
     justify-content: center;
 }
 
+/*---------------------DIV CONTAINER TABELA---------------------------*/
+.containerTabela{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 1350px;
+    padding: 16px;
+
+    background: whitesmoke;
+    /* background-color: rebeccapurple; */
+    border-radius: 10px;
+
+}
 
 .tabela{
-    width: 90%;
+    border-radius:  10px;
+    background-color: red !important;
+    padding: 16px;
+    margin: 16px;
 
-    background: white;
-    border-radius: 10px;
-    padding-bottom: 16px;
 }
-/*---------------------DIV TABELA---------------------------*/
+/*---------------------INPUT SEARCH---------------------------*/
 .buscar{
     display: flex;
-    justify-content: end;
-    margin: 15px;
-
+    justify-content: flex-end;
+    /* margin: 16px; */
+    width: 100%;
     font-style: normal;
     font-weight: 400;
     font-family: 'Open Sans';

@@ -13,6 +13,7 @@ import {
 } from '@phosphor-icons/react'
 import ProgrssBar from '../../components/BarraProgresso'
 import { Link } from 'react-router-dom'
+import { DefaultModal } from '../../components/DefaultModal'
 
 function ListaAlunos() {
   const [data, setData] = useState({
@@ -21,36 +22,141 @@ function ListaAlunos() {
         id: '1',
         nome: 'Task 1',
         data: new Date(),
-        ra: 'TYPE 1',
-        isComplete: true,
-        nodes: [
-          { id: '1.1', nome: 'Subtask 1' },
-          { id: '1.2', nome: 'Subtask 2' }
-        ]
+        ra: '12354',
+        isComplete: true
       },
       {
         id: '2',
         nome: 'Task 2',
         data: new Date(),
-        ra: 'TYPE 2',
-        isComplete: false,
-        nodes: []
+        ra: '54564',
+        isComplete: false
       },
       {
         id: '3',
         nome: 'Task 2',
         data: new Date(),
-        ra: 'TYPE 2',
-        isComplete: false,
-        nodes: []
+        ra: '82126',
+        isComplete: false
       },
       {
         id: '4',
         nome: 'Task 2',
         data: new Date(),
-        ra: 'TYPE 2',
-        isComplete: false,
-        nodes: []
+        ra: '66823',
+        isComplete: false
+      },
+      {
+        id: '4',
+        nome: 'Task 2',
+        data: new Date(),
+        ra: '66823',
+        isComplete: false
+      },
+      {
+        id: '4',
+        nome: 'Task 2',
+        data: new Date(),
+        ra: '66823',
+        isComplete: false
+      },
+      {
+        id: '4',
+        nome: 'Task 2',
+        data: new Date(),
+        ra: '66823',
+        isComplete: false
+      },
+      {
+        id: '4',
+        nome: 'Task 2',
+        data: new Date(),
+        ra: '66823',
+        isComplete: false
+      },
+      {
+        id: '4',
+        nome: 'Task 2',
+        data: new Date(),
+        ra: '66823',
+        isComplete: false
+      },
+      {
+        id: '4',
+        nome: 'Task 2',
+        data: new Date(),
+        ra: '66823',
+        isComplete: false
+      },
+      {
+        id: '4',
+        nome: 'Task 2',
+        data: new Date(),
+        ra: '66823',
+        isComplete: false
+      },
+      {
+        id: '4',
+        nome: 'Task 2',
+        data: new Date(),
+        ra: '66823',
+        isComplete: false
+      },
+      {
+        id: '4',
+        nome: 'Task 2',
+        data: new Date(),
+        ra: '66823',
+        isComplete: false
+      },
+      {
+        id: '4',
+        nome: 'Task 2',
+        data: new Date(),
+        ra: '66823',
+        isComplete: false
+      },
+      {
+        id: '4',
+        nome: 'Task 2',
+        data: new Date(),
+        ra: '66823',
+        isComplete: false
+      },
+      {
+        id: '4',
+        nome: 'Task 2',
+        data: new Date(),
+        ra: '66823',
+        isComplete: false
+      },
+      {
+        id: '4',
+        nome: 'Task 2',
+        data: new Date(),
+        ra: '66823',
+        isComplete: false
+      },
+      {
+        id: '4',
+        nome: 'Task 2',
+        data: new Date(),
+        ra: '66823',
+        isComplete: false
+      },
+      {
+        id: '4',
+        nome: 'Task 2',
+        data: new Date(),
+        ra: '66823',
+        isComplete: false
+      },
+      {
+        id: '4',
+        nome: 'Task 2',
+        data: new Date(),
+        ra: '66823',
+        isComplete: false
       }
     ]
   })
@@ -58,6 +164,10 @@ function ListaAlunos() {
   const theme = useTheme([
     getTheme(),
     {
+      Table: `
+        max-height:500px;
+        border-radius:  10px;
+      `,
       HeaderRow: `
         background: rgba(255, 255, 255, 1);
         font-family: Poppins;
@@ -65,7 +175,6 @@ function ListaAlunos() {
       Row: `
         &:nth-of-type(odd) {
           background: rgba(38, 84, 246, 0.48);
-          ;
         }
 
         &:nth-of-type(even) {
@@ -75,6 +184,8 @@ function ListaAlunos() {
         font-family: Open Sans;
         font-weight: 500;
         color: rgba(0, 0, 0, 1);
+        border-radius:  10px;
+
       `
     }
   ])
@@ -100,8 +211,8 @@ function ListaAlunos() {
           </button>
         </div>
       )
-    },
-    { label: 'Task', renderCell: (item: any) => item.nodes?.lenght }
+    }
+    // { label: 'Task', renderCell: (item: any) => item.nodes?.lenght }
   ]
 
   const [search, setSearch] = React.useState('')
@@ -148,12 +259,40 @@ function ListaAlunos() {
       </div>
 
       <div className={styles.container_tabela}>
-        <div className={styles.user}>
-          <button className={styles.button_user}>
-            <UserPlus size={20} weight="bold" />
-          </button>
-        </div>
-        <div className={styles.tabela}>
+        {/* Botão para adicionar um novo aluno */}
+        <DefaultModal
+          buttonChild={
+            <div className={styles.user}>
+              <button className={styles.button_user}>
+                <UserPlus size={20} weight="bold" />
+              </button>
+            </div>
+          }
+        >
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+          <p>DENTRO MODAL</p>
+        </DefaultModal>
+
+        {/* Container Tabela */}
+        <div className={styles.containerTabela}>
           <label htmlFor="search" className={styles.buscar}>
             Buscar Nome:
             <input
@@ -178,6 +317,7 @@ function ListaAlunos() {
           <CompactTable
             columns={COLUMNS}
             data={data}
+            className={styles.tabela}
             theme={theme}
             layout={{ isDiv: true, fixedHeader: true }}
             id={styles.tabelaCompact}
