@@ -24,7 +24,9 @@
 }
 
 /*---------------------INPUT LOGIN--------------------------*/
-.login{
+
+
+.loginContainer{
     width: 50%;
     display: flex;
     justify-content: center;
@@ -47,6 +49,7 @@ input:-webkit-autofill{
 .email{
     font-family: 'Poppins';
     font-weight: 700;
+    font-size: 20px;
     width: 350px;
     background-color: rgb(67, 88, 164, 1);
     cursor: pointer;
@@ -54,20 +57,21 @@ input:-webkit-autofill{
     border-bottom: 4px solid rgb(246, 246, 246);
     margin-bottom: 2px;
 }
+
 .rightMover{
     display: flex;
+    margin: 16px 0 0 0;
     flex: 1;
     justify-content: flex-end;
 }
 .registre{
     font-family: 'Poppins';
     font-weight: 700;
-    font-size: 14px;
+    font-size: 18px;
     margin: 0;
-
     color: rgba(89, 170, 244, 1);
-
 }
+
 .link{
     text-decoration: none;
 }
@@ -78,8 +82,9 @@ input:-webkit-autofill{
     color: #fff; 
     border-radius: 1rem;
     transition: background-color 0.3s;
-    padding: 8px 16px;
-    
+    padding: 8px 32px;
+    font-size: 20px;
+    font-weight: bold;
     border: none;
     cursor: pointer;
     outline: none;

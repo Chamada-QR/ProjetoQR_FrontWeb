@@ -10,7 +10,7 @@ function Login() {
           <img className={styles.logoImg} src={logoImg} alt="Logo" />
         </div>
       </div>
-      <div className={styles.login}>
+      <div className={styles.loginContainer}>
         <div>
           <input
             className={styles.email}
