@@ -10,15 +10,27 @@
     flex-direction: column;
     justify-content: center;
 }
-.modalContainer{
+.buttonsContainer{
     display: flex;
-    /* min-width: 100%; */
     gap: 16px;
     justify-content: flex-end;
+    align-items: flex-end;
     width: 100%;
 
 }
+.headTitle{
+    width: 100%;
+    max-width: 1325px;
+    font-family: 'Poppins';
+    color: whitesmoke;
+    font-size: 32px;
+    font-weight: bolder;
+    margin: 0;
+}
 
+.headTitle span {
+    color: rgb(34, 34, 34);
+}
 /*---------------------DIV CONTAINER TABELA---------------------------*/
 .containerTabela{
     display: flex;

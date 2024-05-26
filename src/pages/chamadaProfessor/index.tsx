@@ -260,32 +260,37 @@ function ListaAlunos() {
 
       <div className={styles.containerMain}>
         {/* Botão para adicionar um aluno na chamada*/}
-        <div className={styles.modalContainer}>
-          {/* Botao para pagina do QR */}
-          <Link target="_blank" to="/qr">
-            <div className={styles.user}>
-              <button className={styles.button_user}>
-                <QrCode size={32} weight="bold" />
-              </button>
-            </div>
-          </Link>
-
-          {/* Botao para modal */}
-          <DefaultModal
-            buttonChild={
+        <div className={styles.buttonsContainer}>
+          <h2 className={styles.headTitle}>
+            Tabela de presença <span>em tempo real</span>
+          </h2>
+          <div className={styles.buttonsContainer}>
+            {/* Botao para pagina do QR */}
+            <Link target="_blank" to="/qr">
               <div className={styles.user}>
                 <button className={styles.button_user}>
-                  <UserPlus weight="bold" />
+                  <QrCode size={32} weight="bold" />
                 </button>
               </div>
-            }
-          >
-            <form className={styles.formPresenca}>
-              <input type="text" placeholder="Nome completo" />
-              <input type="text" placeholder="Ra" />
-              <button type="submit">Registrar presença</button>
-            </form>
-          </DefaultModal>
+            </Link>
+
+            {/* Botao para modal */}
+            <DefaultModal
+              buttonChild={
+                <div className={styles.user}>
+                  <button className={styles.button_user}>
+                    <UserPlus weight="bold" />
+                  </button>
+                </div>
+              }
+            >
+              <form className={styles.formPresenca}>
+                <input type="text" placeholder="Nome completo" />
+                <input type="text" placeholder="Ra" />
+                <button type="submit">Registrar presença</button>
+              </form>
+            </DefaultModal>
+          </div>
         </div>
 
         {/* Container Tabela */}
