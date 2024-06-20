@@ -15,8 +15,11 @@ import {
 import ProgressBar from '../../components/BarraProgresso'
 import { Link } from 'react-router-dom'
 import { DefaultModal } from '../../components/DefaultModal'
+import axios from 'axios'
 
 function ListaAlunos() {
+  const [progresso, setProgresso] = useState<number>(50)
+
   const [data, setData] = useState({
     nodes: [
       {
@@ -223,6 +226,18 @@ function ListaAlunos() {
     setSearch(event.target.value)
   }
 
+  const addProgresso = () => {
+    if (progresso < 100) {
+      setProgresso(progresso => progresso + 10)
+    }
+  }
+
+  const menosProgresso = () => {
+    if (progresso > 0) {
+      setProgresso(progresso => progresso - 10)
+    }
+  }
+
   useEffect(() => {
     const filteredData = {
       nodes: data.nodes.filter(item =>
@@ -235,19 +250,20 @@ function ListaAlunos() {
     }))
   }, [search])
 
-  const [progresso, setProgresso] = useState<number>(50)
+  useEffect(() => {
+    async function createClass() {
+      const dia = new Date().toISOString().split('T')[0]
 
-  const addProgresso = () => {
-    if (progresso < 100) {
-      setProgresso(progresso => progresso + 10)
+      const response = await axios.post('http://localhost:3758/lesson', {
+        date: dia
+      })
+      // response.id = Salvar LocalStorage
+      console.log(response)
+      console.log(response)
+      console.log(response)
     }
-  }
-
-  const menosProgresso = () => {
-    if (progresso > 0) {
-      setProgresso(progresso => progresso - 10)
-    }
-  }
+    createClass()
+  }, [])
 
   return (
     <section className={styles.fundo_tela}>
