@@ -51,112 +51,42 @@ function ListaAlunos() {
         isComplete: false
       },
       {
-        id: '4',
+        id: '5',
         nome: 'Task 2',
         data: new Date(),
         ra: '66823',
         isComplete: false
       },
       {
-        id: '4',
+        id: '6',
         nome: 'Task 2',
         data: new Date(),
         ra: '66823',
         isComplete: false
       },
       {
-        id: '4',
+        id: '7',
         nome: 'Task 2',
         data: new Date(),
         ra: '66823',
         isComplete: false
       },
       {
-        id: '4',
+        id: '8',
         nome: 'Task 2',
         data: new Date(),
         ra: '66823',
         isComplete: false
       },
       {
-        id: '4',
+        id: '9',
         nome: 'Task 2',
         data: new Date(),
         ra: '66823',
         isComplete: false
       },
       {
-        id: '4',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      },
-      {
-        id: '4',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      },
-      {
-        id: '4',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      },
-      {
-        id: '4',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      },
-      {
-        id: '4',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      },
-      {
-        id: '4',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      },
-      {
-        id: '4',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      },
-      {
-        id: '4',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      },
-      {
-        id: '4',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      },
-      {
-        id: '4',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      },
-      {
-        id: '4',
+        id: '10',
         nome: 'Task 2',
         data: new Date(),
         ra: '66823',
@@ -252,27 +182,24 @@ function ListaAlunos() {
 
   useEffect(() => {
     async function createClass() {
-      try{
-      const dia = new Date().toISOString().split('T')[0]
+      try {
+        const dia = new Date().toISOString().split('T')[0]
 
-      const response = await axios.post('http://localhost:8080/lesson', {
-        date: dia
-      }, {
-      //  withCredentials: true
-      });
+        const response = await axios.post('http://localhost:3758/lesson', {
+          date: dia
+        })
 
-      localStorage.setItem('lessonId', response.data.id);
-      
-      console.log('Aula criada', response.data);
-      console.log('Id Salvo', response.data.id);
-      // response.id = Salvar LocalStorage
-      console.log(response)
-      console.log(response)
-      console.log(response)
-    } catch (error){
-    console.error('Erro ao criar aula', error);
-  }
-}
+        localStorage.setItem('lessonId', response.data.id)
+
+        console.log('Aula criada', response.data)
+        console.log('ID SALVO > ', response.data.id)
+        console.log('ID SALVO > ', response.data.id)
+        console.log('ID SALVO > ', response.data.id)
+        // response.id = Salvar LocalStorage
+      } catch (error) {
+        console.error('Erro ao criar aula', error)
+      }
+    }
     createClass()
   }, [])
 
