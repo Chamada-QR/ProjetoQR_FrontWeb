@@ -252,16 +252,27 @@ function ListaAlunos() {
 
   useEffect(() => {
     async function createClass() {
+      try{
       const dia = new Date().toISOString().split('T')[0]
 
-      const response = await axios.post('http://localhost:3758/lesson', {
+      const response = await axios.post('http://localhost:8080/lesson', {
         date: dia
-      })
+      }, {
+      //  withCredentials: true
+      });
+
+      localStorage.setItem('lessonId', response.data.id);
+      
+      console.log('Aula criada', response.data);
+      console.log('Id Salvo', response.data.id);
       // response.id = Salvar LocalStorage
       console.log(response)
       console.log(response)
       console.log(response)
-    }
+    } catch (error){
+    console.error('Erro ao criar aula', error);
+  }
+}
     createClass()
   }, [])
 

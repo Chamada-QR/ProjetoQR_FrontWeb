@@ -6,42 +6,40 @@ import QRCode from 'qrcode'
 import { useCallback, useEffect, useState } from 'react'
 import axios from 'axios'
 
-function qrStudents() {
+
+interface Lesson{
+  id: string;
+  simula: string;
+}
+
+function QrStudents() {
   const [src, setSrc] = useState<string>('')
   const [qrCodeData, setQrCodeData] = useState('')
+  const [count, setCount] = useState<number>(0);
 
-  const QRCodeGenerator = () => {
-    const generateQRCode = useCallback(async () => {
-      try {
-        const dia = new Date().toISOString().split('T')[0]
-        const response = await axios.post('http://localhost:3578/lesson', {
-          date: dia
-        })
-
-        const data = response.data
-        const qrCodeUrl = await QRCode.toDataURL(JSON.stringify(data.lessonId))
-        setQrCodeData(qrCodeUrl)
-      } catch (error) {
-        console.error('Erro ao gerar o QR Code', error)
-      }
-    }, [])
-
-    useEffect(() => {
-      generateQRCode() // Generate the QR code initially
-      const intervalId = setInterval(generateQRCode, 5000) // Set interval to generate QR code every 5 seconds
-      return () => clearInterval(intervalId) // Cleanup interval on component unmount
-    }, [generateQRCode]) // Use generateQRCode as a dependency
-  }
-
+  //DELETAR O CODIGO COUNT
   useEffect(() => {
     const generateQRCode = async () => {
       try {
         // const id = Pegar do localhost
-        const response = await axios.get(`http://localhost:3000/lesson/${id}`)
+        const id = localStorage.getItem('lessonId');
+        if(!id){
+          console.error('Id nao encontrado');
+          return;
+        }
+        const lessonData: Lesson = {
+          id: id,
+          simula: `conteudo ${count}`
+        }
 
-        const qrCodeUrl = await QRCode.toDataURL(JSON.stringify(response.))
+        const response = await axios.get(`http://localhost:8080/lesson/${id}`)
+
+        const qrCodeUrl = await QRCode.toDataURL(JSON.stringify(response.data))
         // const qrCodeUrl = await QRCode.toDataURL(JSON.stringify(data));
         setQrCodeData(qrCodeUrl)
+        console.log('QR gerado', qrCodeUrl);
+
+        setCount(pCount => pCount + 1);
       } catch (error) {
         console.error('Erro ao gerar o QR Code', error)
       }
@@ -49,7 +47,7 @@ function qrStudents() {
     generateQRCode()
     const intervalId = setInterval(generateQRCode, 5000)
     return () => clearInterval(intervalId)
-  }, [])
+  }, [count]);
 
   //  const generate = (linkRespostaApi) => {
   //   QRCode.toDataURL(linkRespostaApi).then(setSrc)
@@ -70,7 +68,7 @@ function qrStudents() {
             <br /> sua presença
           </span>
         </h2>
-        <img src={qrCodeData} />
+        {qrCodeData && <img src={qrCodeData} />}
       </main>
     </section>
   )
@@ -80,4 +78,4 @@ function qrStudents() {
 /*      
       <button type='button' onClick={generateQRCode}></button>*/
 
-export default qrStudents
+export default QrStudents
