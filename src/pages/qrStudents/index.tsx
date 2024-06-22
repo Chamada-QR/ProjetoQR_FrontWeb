@@ -3,16 +3,15 @@ import { RewindCircle } from '@phosphor-icons/react'
 import { Link } from 'react-router-dom'
 
 import QRCode from 'qrcode'
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-interface Lesson {
-  id: string
-  simula: string
-}
+// interface Lesson {
+//   id: string
+//   simula: string
+// }
 
 function QrStudents() {
-  const [src, setSrc] = useState<string>('')
   const [qrCodeData, setQrCodeData] = useState('')
   const [count, setCount] = useState<number>(0)
 
@@ -25,10 +24,6 @@ function QrStudents() {
         if (!id) {
           console.error('Id nao encontrado')
           return
-        }
-        const lessonData: Lesson = {
-          id: id,
-          simula: `conteudo ${count}`
         }
 
         const response = await axios.get(`http://localhost:3758/lesson/${id}`)

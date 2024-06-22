@@ -20,80 +20,7 @@ import axios from 'axios'
 function ListaAlunos() {
   const [progresso, setProgresso] = useState<number>(50)
 
-  const [data, setData] = useState({
-    nodes: [
-      {
-        id: '1',
-        nome: 'Task 1',
-        data: new Date(),
-        ra: '12354',
-        isComplete: true
-      },
-      {
-        id: '2',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '54564',
-        isComplete: false
-      },
-      {
-        id: '3',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '82126',
-        isComplete: false
-      },
-      {
-        id: '4',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      },
-      {
-        id: '5',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      },
-      {
-        id: '6',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      },
-      {
-        id: '7',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      },
-      {
-        id: '8',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      },
-      {
-        id: '9',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      },
-      {
-        id: '10',
-        nome: 'Task 2',
-        data: new Date(),
-        ra: '66823',
-        isComplete: false
-      }
-    ]
-  })
+  const [data, setData] = useState({ nodes: [] })
 
   const theme = useTheme([
     getTheme(),
@@ -168,19 +95,30 @@ function ListaAlunos() {
     }
   }
 
-  useEffect(() => {
-    const filteredData = {
-      nodes: data.nodes.filter(item =>
-        item.nome.toLowerCase().includes(search.toLowerCase())
-      )
-    }
-    setData(prevState => ({
-      ...prevState,
-      nodes: filteredData.nodes
-    }))
-  }, [search])
+  // useEffect(() => {
+  //   const filteredData = {
+  //     nodes: data.nodes.filter(item =>
+  //       item.nome.toLowerCase().includes(search.toLowerCase())
+  //     )
+  //   }
+  //   setData(prevState => ({
+  //     ...prevState,
+  //     nodes: filteredData.nodes
+  //   }))
+  // }, [search])
 
   useEffect(() => {
+    async function fetchUsers() {
+      const id = localStorage.getItem('lessonId')
+
+      const response = await axios.get(
+        `http://localhost:3758/users/present/${id}`
+      )
+      console.log(response)
+      console.log('Resposata FetchUser API' + response)
+      console.log('Resposata FetchUser API' + response)
+      setData({ nodes: response.data })
+    }
     async function createClass() {
       try {
         const dia = new Date().toISOString().split('T')[0]
@@ -201,6 +139,9 @@ function ListaAlunos() {
       }
     }
     createClass()
+
+    const intervalId = setInterval(fetchUsers, 10000)
+    return () => clearInterval(intervalId)
   }, [])
 
   return (
@@ -269,15 +210,16 @@ function ListaAlunos() {
               }}
             />
           </label>
-
-          <CompactTable
-            columns={COLUMNS}
-            data={data}
-            className={styles.tabela}
-            theme={theme}
-            layout={{ isDiv: true, fixedHeader: true }}
-            id={styles.tabelaCompact}
-          />
+          {data && (
+            <CompactTable
+              columns={COLUMNS}
+              data={data}
+              className={styles.tabela}
+              theme={theme}
+              layout={{ isDiv: true, fixedHeader: true }}
+              id={styles.tabelaCompact}
+            />
+          )}
         </div>
 
         {/* Barra de progresso */}
