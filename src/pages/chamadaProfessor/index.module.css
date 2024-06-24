@@ -39,7 +39,7 @@
     width: 100%;
     max-width: 1350px;
     padding: 16px;
-
+    min-height: 350px;
     background: whitesmoke;
     /* background-color: rebeccapurple; */
     border-radius: 10px;
