@@ -53,14 +53,15 @@ function ListaAlunos() {
   ])
 
   const COLUMNS = [
-    { label: 'Nome', renderCell: (item: any) => item.name },
+    { label: 'Nome', renderCell: (item: any) => item.nome },
     {
       label: 'Data',
       renderCell: (item: any) =>
-        {
-          console.log(item.createdAt)
-          return new Date(item.createdAt).toLocaleString()
-        }
+        item.data.toLocaleDateString('en-Us', {
+          years: 'numeric',
+          month: '2-digit',
+          day: '2-digit'
+        })
     },
     { label: 'RA', renderCell: (item: any) => item.ra },
     {
@@ -109,7 +110,7 @@ function ListaAlunos() {
   useEffect(() => {
     async function fetchUsers() {
       const id = localStorage.getItem('lessonId')
-      console.log(id);
+
       const response = await axios.get(
         `http://localhost:3758/lesson/${id}`
       )

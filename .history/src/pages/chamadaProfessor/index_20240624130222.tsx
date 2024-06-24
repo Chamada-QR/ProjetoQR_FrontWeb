@@ -57,10 +57,11 @@ function ListaAlunos() {
     {
       label: 'Data',
       renderCell: (item: any) =>
-        {
-          console.log(item.createdAt)
-          return new Date(item.createdAt).toLocaleString()
-        }
+        item.createdAt.toLocaleDateString('en-Us', {
+          years: 'numeric',
+          month: '2-digit',
+          day: '2-digit'
+        })
     },
     { label: 'RA', renderCell: (item: any) => item.ra },
     {

@@ -59,7 +59,7 @@ function ListaAlunos() {
       renderCell: (item: any) =>
         {
           console.log(item.createdAt)
-          return new Date(item.createdAt).toLocaleString()
+          return new Date(item.createdAt).toLocaleDateString()
         }
     },
     { label: 'RA', renderCell: (item: any) => item.ra },
